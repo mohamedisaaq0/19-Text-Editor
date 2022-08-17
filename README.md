@@ -12,9 +12,7 @@ JATE is a text editor that runs in the browser. Its a single page application th
 - [Usage](#usage)
 - [Technologies used](#technologies-used)
 - [License](#license)
-- [How to Contribute](#how-to-contribute)
 - [Deployed_Link](#deployed-link)
-- [Questions](#questions)
 
 ## Installation
 
