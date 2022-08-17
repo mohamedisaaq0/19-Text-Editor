@@ -6,33 +6,41 @@ const { InjectManifest } = require('workbox-webpack-plugin');
 module.exports = () => {
   return {
     mode: 'development',
+    // Entry point for files
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js'
+      install: './src/js/install.js',
+      cards: './src/js/cards.js'
     },
+    // Output for our bundles
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+      // Webpack plugin that generates our html file and injects our bundles. 
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'J.A.T.E'
+        title: 'Contact Cards'
       }),
+     
+      // Injects our custom service worker
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'src-sw.js',
       }),
+
+      // Creates a manifest.json file.
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
-        name: 'Just Another Text Editor',
-        short_name: 'J.A.T.E',
-        description: 'Takes notes with JavaScript syntax highlighting!',
+        name: 'Contact Cards',
+        short_name: 'Contact',
+        description: 'Never forget your contacts!',
         background_color: '#225ca3',
         theme_color: '#225ca3',
-        start_url: '/',
-        publicPath: '/',
+        start_url: './',
+        publicPath: './',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
@@ -44,6 +52,7 @@ module.exports = () => {
     ],
 
     module: {
+      // CSS loaders
       rules: [
         {
           test: /\.css$/i,
@@ -52,6 +61,7 @@ module.exports = () => {
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
+          // We use babel-loader in order to use ES6.
           use: {
             loader: 'babel-loader',
             options: {

@@ -1,7 +1,8 @@
 {
-  "name": "JATE",
+  "name": "mini-project-main",
   "version": "1.0.0",
   "description": "",
+  "main": "server.js",
   "scripts": {
     "start:dev": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
     "start": "npm run build && cd server && node server.js",
@@ -10,11 +11,13 @@
     "install": "cd client && npm install",
     "client": "cd client && npm start"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4"
+    "concurrently": "^5.2.0"
   }
 }
